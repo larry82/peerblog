@@ -7,6 +7,18 @@ $gray:#757575;
 	width:100vw;
 	background-color: $main;
 	color:$gray;
+	padding-top: 10vh;
+	h1{
+		font-size: 54px;
+		margin-bottom: 0;
+	}
+	h3{
+		margin-top: 5px;
+	}
+	h4{
+		margin-top: 40px;
+		margin-bottom: 30px;
+	}
 
 	.btn{
 		border: 1px solid darken($highlight,15%);;
@@ -18,4 +30,14 @@ $gray:#757575;
 		font-weight: 700;
 	}
 
+}
+@media (max-width: 768px){
+	#show-quizzes{
+		h1{
+			font-size:36px;
+		}
+		h3{
+			margin-top: 18px;
+		}
+	}
 }
