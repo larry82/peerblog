@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-12 score text-center">
+			<%= @result_category %>
+			<%= @result_content %>
+	</div>
+	<div class="col-md-8 col-md-offset-2">
+		<%= simple_form_for(@quiz_result) do |f| %>
+			<%= f.error_notification %>
+
+			<div class="form-inputs col-md-12">
+				<%= f.input :email,label:"請留下您的信箱：" %>
+			</div>
+
+			<div class="form-actions">
+				<%= f.button :submit,"確認" %>
+				<% @lol = "lol" %>
+				<%= social_share_button_tag(@lol) %>
+			</div>
+		<% end %>
+	</div>
+</div>

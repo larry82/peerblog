@@ -11,6 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160822113707) do
+
+  create_table "admin_quizzes", force: :cascade do |t|
+    t.string   "title"
+    t.string   "introduction"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "quiz_result_id"
+    t.integer  "content"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+  add_index "answers", ["quiz_result_id"], name: "index_answers_on_quiz_result_id"
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "quiz_id"
+    t.integer  "number"
+    t.string   "content"
+    t.string   "introduction"
+    t.string   "category"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "options",      default: "--- []\n"
+  end
+
+  add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id"
+
+  create_table "quiz_results", force: :cascade do |t|
+    t.integer  "quiz_id"
+    t.integer  "scores"
+    t.string   "answers"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "quiz_results", ["quiz_id"], name: "index_quiz_results_on_quiz_id"
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string   "title"
+    t.string   "introduction"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "subtitle"
+  end
 
 end

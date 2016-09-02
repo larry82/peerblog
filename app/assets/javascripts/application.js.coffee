@@ -4,4 +4,5 @@
 #= require cocoon
 #= require turbolinks
 #= require react
+#= require social-share-button
 #= require_tree .
