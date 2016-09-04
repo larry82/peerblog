@@ -32,7 +32,7 @@ $gray:#757575;
 			font-size: 1.8em;
 		}
 		margin-top: 5vh;
-		margin-bottom: 5vh;
+		margin-bottom: 2vh;
 	}
 	.btn{
 		border: 1px solid darken($highlight,15%);;
@@ -42,5 +42,20 @@ $gray:#757575;
 		padding: 15px 40px;
 		font-size: 1.6em;
 		font-weight: 700;
+	}
+	
+	.social-share-button{
+		display: inline-block;
+		vertical-align: middle;
+		.ssb-icon {
+		    background-size: 54px 54px;
+			height:54px;
+			width:54px;
+		}
+	}
+	.share{
+		vertical-align: middle;
+		display: inline-block;
+		font-size: 3.2em;
 	}
 }
