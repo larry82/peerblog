@@ -1,20 +1,27 @@
+<% @head_title = "我的孩子在SQ小測驗中獲得："+@result_category %>
 <div class="row">
-	<div class="col-md-12 score text-center">
-			<%= @result_category %>
-			<%= @result_content %>
+	<div class="col-md-12 text-center">
+		<h1> <%= @result_score %> </h1>
+		<h2> <%= @result_category %> </h2>
+	</div>
+	<div class="content col-md-6 col-md-offset-3">
+		<p> 
+			<%= @result_content.html_safe %>
+			<a href="peerblog.online" class="font-green">Peer 輔導資訊部落格</a>
+		</p>
 	</div>
 	<div class="col-md-8 col-md-offset-2">
 		<%= simple_form_for(@quiz_result) do |f| %>
 			<%= f.error_notification %>
 
-			<div class="form-inputs col-md-12">
+			<div class="form-inputs col-md-8 col-md-offset-2">
 				<%= f.input :email,label:"請留下您的信箱：" %>
 			</div>
 
-			<div class="form-actions">
-				<%= f.button :submit,"確認" %>
-				<% @lol = "lol" %>
-				<%= social_share_button_tag(@lol) %>
+			<div class="form-actions col-md-12 text-center">
+				<%= f.button :submit,"確認",type:"update_email" %>
+				<% @lol = "lollijf;sldflsi" %>
+				<%= social_share_button_tag( @lol, :url => request.original_url ,:desc => "twipsy") %>
 			</div>
 		<% end %>
 	</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902045519) do
+ActiveRecord::Schema.define(version: 20160903060030) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -55,16 +55,8 @@ ActiveRecord::Schema.define(version: 20160902045519) do
 
   add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id"
 
-  create_table "quiz_results", force: :cascade do |t|
-    t.integer  "quiz_id"
-    t.integer  "scores"
-    t.string   "answers"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "quiz_results", ["quiz_id"], name: "index_quiz_results_on_quiz_id"
+# Could not dump table "quiz_results" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "quizzes", force: :cascade do |t|
     t.string   "title"

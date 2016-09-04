@@ -11,8 +11,13 @@ class QuizResultsController < ApplicationController
   	case @scores
 
   	when 0..5
-  		@result_category = "70~75"
-  		@result_content  = "太棒了，您真是灌籃高手"
+  		@result_score = "70~75"
+  		@result_category = "-  SQ 大師 -"
+  		@result_content  = "
+			您的孩子對於他人的想法和情緒有著敏銳的觀察力，且富有同情心和同理心，在團體生活裡展現出領袖氣質，大家都喜歡和他做朋友！<br>
+			建議您能適時給予他正向的肯定，鼓勵他在各種場合發揮他的影響力，例如社團活動、體育賽事或夏令營等等，放心地讓他一展長才！<br>
+			更多關於提升領導能力與溝通能力的資訊，請參考
+  		"
   	when 6..14
   		@result_category = "76~84"
   		@result_content  = "太棒了，您真是灌籃高手"
