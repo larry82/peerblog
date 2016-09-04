@@ -18,15 +18,8 @@ class QuizzesController < ApplicationController
 
   def create
     @quiz = Quiz.new(quiz_params)
-
-    respond_to do |format|
-      if @quiz.save
-        format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
-        format.json { render :show, status: :created, location: @quiz }
-      else
-        format.html { render :new }
-        format.json { render json: @quiz.errors, status: :unprocessable_entity }
-      end
+    if @quiz.save
+    	redirect_to new_question_path
     end
   end
 

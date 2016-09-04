@@ -7,7 +7,7 @@
 	<div class="content col-md-6 col-md-offset-3">
 		<p> 
 			<%= @result_content.html_safe %>
-			<a href="peerblog.online" class="font-green">Peer 輔導資訊部落格</a>
+			<a href="http://peerblog.online" class="font-green"  target="_blank" >Peer 輔導資訊部落格</a>
 		</p>
 	</div>
 	<div class="col-md-8 col-md-offset-2">
@@ -21,7 +21,7 @@
 			<div class="form-actions col-md-12 text-center">
 				<%= f.button :submit,"確認",type:"update_email" %>
 				<% @lol = "lollijf;sldflsi" %>
-				<%= social_share_button_tag( @lol, :url => request.original_url ,:desc => "twipsy") %>
+				<%= social_share_button_tag( @lol, :url => request.original_url, :image => "http://peerblog.online/wp-content/uploads/2016/08/leadership.jpg",) %>
 			</div>
 		<% end %>
 	</div>
