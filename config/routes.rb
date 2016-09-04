@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 	
-	
+	devise_for :admins
 
   authenticated :admin do
-  	devise_for :admins
   	resources :answers
   	resources :questions
   	resources :quiz_results
