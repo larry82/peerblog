@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
-        redirect_to questions_path
+        redirect_to new_question_path
     else
         redirect_to :back
     end
