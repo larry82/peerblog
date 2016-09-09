@@ -1,6 +1,6 @@
 <div class="progress-section col-md-6">
 	<div class="progress-desc col-md-12 ">
-		<% persentage = (((question.number.to_f)/questions_count).round(2)*100).to_s+"%" %>
+		<% persentage = (((question.number.to_f*100)/questions_count).round(2)).to_s+"%" %>
 		<%= persentage %>
 	</div>
 	<div class="progressbar col-md-10 " >
