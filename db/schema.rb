@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160903060030) do
+ActiveRecord::Schema.define(version: 20160906143054) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -42,15 +42,25 @@ ActiveRecord::Schema.define(version: 20160903060030) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["quiz_result_id"], name: "index_answers_on_quiz_result_id"
 
+  create_table "options", force: :cascade do |t|
+    t.integer  "question_id"
+    t.string   "content"
+    t.integer  "score"
+    t.text     "explanation"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "options", ["question_id"], name: "index_options_on_question_id"
+
   create_table "questions", force: :cascade do |t|
     t.integer  "quiz_id"
     t.integer  "number"
     t.string   "content"
     t.string   "introduction"
     t.string   "category"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "options",      default: "--- []\n"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id"

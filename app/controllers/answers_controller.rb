@@ -5,13 +5,6 @@ class AnswersController < ApplicationController
     @answers = Answer.all
   end
 
-  def multi_create
-    @answer1 = Answer.new(
-      question_id: params[:answers]["1"][:question_id],
-      content:     params[:answers]["1"][:content]
-    )
-  end
-
   def show
   end
 
@@ -22,17 +15,34 @@ class AnswersController < ApplicationController
   def edit
   end
 
+  def create_or_update_via_ajax
+  	unless Answer.exists?(question_id:params[:question_id], quiz_result_id:params[:quiz_result_id])
+  		@answer = Answer.create!(content:params[:score],question_id:params[:question_id], quiz_result_id:params[:quiz_result_id])
+  	else
+  		@answer = Answer.where(question_id:params[:question_id], quiz_result_id:params[:quiz_result_id]).first
+  		unless @answer.content == params[:score]
+  			@answer.update_attributes!(question_id:params[:question_id], quiz_result_id:params[:quiz_result_id],content:params[:score])
+  		end
+  	end
+  	
+  	# 已經完成的問題id 
+  	questions_answered_ids_array = Answer.where(quiz_result_id:params[:quiz_result_id]).pluck(:question_id)
+  	question_ids_array 			 = Quiz.find(@answer.question.quiz_id).questions.pluck(:id)
+	
+	next_id    = (question_ids_array - questions_answered_ids_array)[0]
+	next_id  ||= question_ids_array.last
+
+	next_number = Question.find(next_id).number
+	@next_question_id = "questions_number_"+next_number.to_s
+
+	@done = (questions_answered_ids_array.length == question_ids_array.length)
+
+  end
+
   def create
     @answer 		 = Answer.new(answer_params)
-    @next_question   = @answer.question.next
+    @answer.save!
 
-    if @answer.save!
-    	if @next_question
-        	redirect_to quiz_page_question_path(@next_question, quiz_result_id:@answer.quiz_result_id)
-        else
-        	redirect_to report_quiz_result_path(@answer.quiz_result)
-        end
-    end
   end
 
   def update

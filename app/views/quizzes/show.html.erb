@@ -4,13 +4,11 @@
 		<h1><%= @quiz.title %></h1>
 	</div>
 	<div class="col-md-12">
-		<h3><%= @quiz.subtitle %></h3>
+		<h4><%= @quiz.subtitle %></h4>
 	</div>
-	<div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
-		<h4><%= @quiz.introduction %></h4>
-	</div>
-	<div class="col-md-12" style="margin-top: 50px;">
-		<%= link_to "開始測驗", quiz_page_question_path(@quiz.questions.order(:number).first, start_the_test: true), class:"btn btn-default" %>
+
+	<div class="col-md-12" style="margin-top: 40px;">
+		<%= link_to "開始測驗", quiz_page_quiz_path , class:"btn btn-default" %>
 	</div>
 </div>
 

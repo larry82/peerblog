@@ -1,0 +1,26 @@
+
+<!-- 外筐：如果已經選過了 選項變不透明 -->
+	<div class="bd bd-not-active" >
+
+<!-- 選項本人 -->
+		<div class="btn btn-default option " 
+			data-link="<%= create_or_update_via_ajax_answers_path %>"
+			data-score="<%= option.score %>"
+			data-question-id="<%= option.question.id %>"
+			data-quiz-result-id="<%= quiz_result.id %>"
+			>
+<!-- 選項內容 -->
+			<div class="option-content">
+				<%= index+1 %>. <%= option.content %>
+			</div>
+<!-- 選項內容結束 -->
+
+<!-- 勾勾：如果已經有填過答了 勾勾就show -->
+			<div class="option-checked option-hide">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			</div>
+<!-- 勾勾結束 -->
+		</div>
+<!-- 選項本人結束 -->
+	</div>
+<!-- 外筐結束 -->

@@ -1,0 +1,26 @@
+<div class="row">
+	<% @questions.each do |q| %>
+		<div class="question-block undone" id="<%= "questions_number_"+q.number.to_s %>" name="<%= "questions_number_"+q.number.to_s %>">
+			<div class="col-md-8 col-md-offset-2 title">
+				<h2>
+					<span class="undone-text"></span>
+					<%= q.number %>.
+					<%= q.content %>
+				</h2>
+			</div>
+			<div class="col-md-8 col-md-offset-2 options">
+				<% q.options.each_with_index do |o,index| %>
+					<%= render "quizzes/quiz_page_options", option:o, quiz_result: @quiz_result,index: index %>
+				<% end %>
+			</div>
+			
+			<div class="col-md-8 col-md-offset-2">
+				
+				<%= render 'quizzes/quiz_page_functions',question:q, questions_count:@questions.count %>
+			</div>
+		</div>
+
+	<% end %>
+</div>
+
+

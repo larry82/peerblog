@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy,:quiz_page]
 
   def index
     @quizzes = Quiz.all
@@ -11,6 +11,11 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
+  end
+
+  def quiz_page
+    @quiz_result = QuizResult.create(quiz_id: @quiz.id)
+  	@questions   = @quiz.questions.order(:number)
   end
 
   def edit

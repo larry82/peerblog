@@ -11,18 +11,15 @@ class QuestionsController < ApplicationController
   end
 
   def quiz_page
-  	if params[:start_the_test] == "true"
+  	unless session[:quiz_result_id].empty?
     	@quiz_result = QuizResult.create(quiz_id:@question.quiz_id)
     else
-    	@quiz_result = QuizResult.find(params[:quiz_result_id])
+    	@quiz_result = QuizResult.find(session[:quiz_result_id])
     end
 
-    @options = []
+    session[:quiz_result_id] = @quiz_result.id
 
-    @question.options.split(" ").each_with_index do |i,index|
-    	@options << [i,index]
-    end
-
+    @options 		 = @question.options.all
     @prev_question   = @question.prev
     @next_question	 = @question.next
     @questions_count = Quiz.find(@question.quiz_id).questions.count
@@ -35,9 +32,11 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    3.times{ @question.options.build }
   end
 
   def edit
+  	3.times{ @question.options.build }
   end
 
   def create
@@ -78,6 +77,6 @@ class QuestionsController < ApplicationController
 
 
     def question_params
-      params.require(:question).permit(:quiz_id, :number, :content,:options, :introduction, :category)
+      params.require(:question).permit(:quiz_id, :number, :content,:introduction, :category,options_attributes: [:question_id, :content, :score, :explanation])
     end
 end

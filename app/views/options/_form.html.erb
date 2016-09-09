@@ -1,0 +1,14 @@
+<%= simple_form_for(@option) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :question %>
+    <%= f.input :content %>
+    <%= f.input :score %>
+    <%= f.input :explanation %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

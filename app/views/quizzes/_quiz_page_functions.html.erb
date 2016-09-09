@@ -1,0 +1,26 @@
+<div class="progress-section col-md-6">
+	<div class="progress-desc col-md-12 ">
+		<% persentage = (((question.number.to_f)/questions_count).round(2)*100).to_s+"%" %>
+		<%= persentage %>
+	</div>
+	<div class="progressbar col-md-10 " >
+		<div class="contain" style="<%= "width:"+persentage+";" %>">
+			
+		</div>
+	</div>
+</div>
+<div class="btn-section col-md-4 text-right">
+	<% unless question.number == 1 %>
+		<a class="btn btn-switch up-btn" href="<%= "#questions_number_"+(question.number-1).to_s %>">
+		<%= image_tag("tri.svg",width:"40px") %>
+		</a>
+	<% end %>
+	<% if question.number == questions_count %>
+		<%= link_to "確認送出", report_quiz_result_path(@quiz_result),class:"btn btn-switch hide",id:"send-btn" %>
+		<div class="btn btn-switch" id="send-btn-disabled" disabled="disabled">
+			確認送出
+		</div>
+	<% end %>
+
+
+</div>
