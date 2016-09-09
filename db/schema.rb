@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906143054) do
+ActiveRecord::Schema.define(version: 20160909012053) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160906143054) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "questions", ["number"], name: "index_questions_on_number", unique: true
   add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id"
 
 # Could not dump table "quiz_results" because of following NoMethodError

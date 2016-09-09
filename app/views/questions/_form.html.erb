@@ -6,14 +6,14 @@
     <%= f.input :number ,label:"題目編號" %>
     <%= f.input :content ,label:"題目內容" %>
     <%= f.input :introduction ,label:"題目說明" %>
-    <%= f.input :category,label:"題目種類"  %>
+    <%= f.input :category,label:"題目種類", input_html: {value:"單選題"} %>
     
     <%= f.simple_fields_for :options do |options_form| %>
     	<h2 style="color:#C6DABF;">
     		----------------------------------------
     	</h2>
         <%= options_form.input :content,label:"選項" %>
-        <%= options_form.input :score,label:"給分" %>
+        <%= options_form.input :score,label:"給分", input_html: { value: options_form.index } %>
         <%= options_form.input :explanation,label:"評語" %>
 
     <% end %>
